@@ -1,11 +1,11 @@
 ## Preview
 <p align="center">
-    <img src="public/images/ss/ss1.png" alt="ss1">
-    <img src="public/images/ss/ss2.png" alt="ss2">
-    <img src="public/images/ss/ss3.png" alt="ss3">
-    <img src="public/images/ss/ss4.png" alt="ss4">
-    <img src="public/images/ss/ss5.png" alt="ss5">
-    <img src="public/images/ss/ss6.png" alt="ss6">
+    <img src="public/images/ss/ss1.png" alt="ss1"><br>
+    <img src="public/images/ss/ss2.png" alt="ss2"><br>
+    <img src="public/images/ss/ss3.png" alt="ss3"><br>
+    <img src="public/images/ss/ss4.png" alt="ss4"><br>
+    <img src="public/images/ss/ss5.png" alt="ss5"><br>
+    <img src="public/images/ss/ss6.png" alt="ss6"><br>
 </p>
 
 ## Installation
