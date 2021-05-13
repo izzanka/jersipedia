@@ -1,3 +1,9 @@
+## Preview
+<p align="center">
+    <img src="public/images/ss/ss1.png" alt="ss">
+</p>
+
+## Installation
 Clone Project ini setelah selesai pada terminal masuk kedalam directory project
 
 Ketikkan:
