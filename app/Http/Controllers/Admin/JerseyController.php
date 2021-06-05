@@ -58,10 +58,9 @@ class JerseyController extends Controller
             if($request->hasFile('image')){
                 $image = $request->file('image');
                 $imageName = time() . '.' . $image->extension();
-                
-                Image::load($image)->width(600)->height(600)->save();
-
                 $image->move('images/jersey/',$imageName);
+                
+                Image::load(public_path('images/jersey') . '/' . $imageName)->width(600)->height(600)->save();
 
                 Jersey::create([
                     'league_id' => $request->league_id,
