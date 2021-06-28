@@ -22,7 +22,7 @@ class checkorder extends Command
      *
      * @var string
      */
-    protected $description = 'Checking if payment more then 24 hours';
+    protected $description = 'Check if payment is more than 24 hours';
 
     /**
      * Create a new command instance.
