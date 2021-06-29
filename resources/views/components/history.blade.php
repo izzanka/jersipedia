@@ -3,9 +3,7 @@
         
         <i class="bi bi-clock-history"></i>
         History
-        @if(!empty($orders)) 
         <span class="badge badge-primary badge-pill">
-            {{ $orders }}</span>
-        @endif
+            {{ $orders ?? 0 }}</span>
     </a>
 </li>
