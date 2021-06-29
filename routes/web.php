@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,27 +18,31 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
+Route::get('/cronjob',function(){
+    Artisan::call('/checkorder');
+});
+
 Route::get('/','HomeController@index');
 Route::get('/jersey','JerseyController@index')->name('jersey');
-Route::get('/jersey/{id}', 'JerseyController@show')->name('jersey.detail');
-Route::get('/league/{id}','LeagueController@index')->name('league');
+Route::get('/jersey/{jersey}', 'JerseyController@show')->name('jersey.detail');
+Route::get('/league/{league}','LeagueController@index')->name('league');
 
 Route::group(['middleware' => ['auth','verified']],function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('/jersey/{id}','JerseyController@insert_cart')->name('insert.cart');
+    Route::post('/jersey/{jersey}','JerseyController@insert_cart')->name('insert.cart');
 
     Route::namespace('User')->group(function(){
 
         Route::view('/profile','user.profile')->name('profile');
-        Route::put('/profile/update/{id}','ProfileController@update_profile')->name('profile.update');
-        Route::put('/profile/update_password/{id}','ProfileController@update_password')->name('profile.update_password');
-        Route::delete('/profile/delete/{id}','ProfileController@destroy')->name('profile.delete.account');
+        Route::put('/profile/update/{user}','ProfileController@update_profile')->name('profile.update');
+        Route::put('/profile/update_password/{user}','ProfileController@update_password')->name('profile.update_password');
+        Route::delete('/profile/delete/{user}','ProfileController@destroy')->name('profile.delete.account');
 
         Route::group(['middleware' => ['can:isUser']],function(){
 
             Route::get('/cart','CartController@index')->name('cart');
-            Route::get('/cart/{id}/edit/{cond}','CartController@edit')->name('cart.edit');
+            Route::get('/cart/{orderdetail}/edit/{cond}','CartController@edit')->name('cart.edit');
 
             // Route::get('/cart/{id}/add','CartController@add')->name('cart.add');
             // Route::get('/cart/{id}/min', 'CartController@min')->name('cart.min');
