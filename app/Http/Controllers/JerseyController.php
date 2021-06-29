@@ -22,17 +22,15 @@ class JerseyController extends Controller
         return view('jersey',compact('jerseys','title'));
     }
 
-    public function show($id)
+    public function show(Jersey $jersey)
     {
-        $jersey = Jersey::findOrFail($id);
         $jerseys = Jersey::with('league')->where('id','!=',$jersey->id)->latest()->take(4)->get();
         return view('jerseydetail',compact('jersey','jerseys'));
     }
 
-    public function insert_cart(Request $request,$id)
+    public function insert_cart(Request $request,Jersey $jersey)
     {
         $user = auth()->id();
-        $jersey = Jersey::findOrFail($id);
         $order = Order::where('user_id',$user)->where('status',0)->first();
 
         if($order){

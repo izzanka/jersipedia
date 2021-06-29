@@ -32,9 +32,7 @@ class CartController extends Controller
         return view('user.cart');
     }
 
-    public function edit($id,$cond){
-
-        $orderdetail = OrderDetail::find($id);
+    public function edit(OrderDetail $orderdetail,$cond){
 
         if($cond == "add")
         {

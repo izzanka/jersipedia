@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
 
-    public function update_profile(Request $request, $id)
+    public function update_profile(Request $request,User $user)
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|string',
-            'email' => 'required|unique:users,email,'.$id,
+            'email' => 'required|unique:users,email,'.$user,
             'phone' => 'numeric|min:10|nullable',
             'address' => 'nullable'
         ]);
@@ -25,7 +25,6 @@ class ProfileController extends Controller
                    ->withErrors($validator)
                    ->withInput();
         }else{
-            $user = User::find($id);
             $user->name = $request->name;
             $user->email = $request->email;
             $user->phone = $request->phone;
@@ -36,7 +35,7 @@ class ProfileController extends Controller
         }
     }
 
-    public function update_password(Request $request, $id)
+    public function update_password(Request $request, User $user)
     {
         $validator = Validator::make($request->all(),[
             'password' => 'required|confirmed|min:8',
@@ -48,7 +47,6 @@ class ProfileController extends Controller
                    ->withErrors($validator)
                    ->withInput();
         }else{
-            $user = User::find($id);
             $user->password = Hash::make($request->password);
             $user->save();
 
@@ -56,9 +54,8 @@ class ProfileController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
         $user->delete();
         return redirect(route('login'));
     }

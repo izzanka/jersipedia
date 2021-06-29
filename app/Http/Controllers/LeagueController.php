@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 
 class LeagueController extends Controller
 {
-    public function index($id)
+    public function index(League $league)
     {
-        $league = League::find($id);
         $title = $league->name;
-        $jerseys = Jersey::where('league_id',$id)->latest()->paginate(8);
+        $jerseys = Jersey::where('league_id',$league->id)->latest()->paginate(8);
         return view('jersey',compact('jerseys','title'));
     }
 
