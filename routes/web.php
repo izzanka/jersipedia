@@ -44,10 +44,6 @@ Route::group(['middleware' => ['auth','verified']],function(){
             Route::get('/cart','CartController@index')->name('cart');
             Route::get('/cart/{orderdetail}/edit/{cond}','CartController@edit')->name('cart.edit');
 
-            // Route::get('/cart/{id}/add','CartController@add')->name('cart.add');
-            // Route::get('/cart/{id}/min', 'CartController@min')->name('cart.min');
-            // Route::get('/cart/{id}/cancel', 'CartController@destroy')->name('cart.cancel');
-
             Route::get('/cart/checkout/{code}','CartController@checkout')->name('cart.checkout');
 
             //rajaongkir route
