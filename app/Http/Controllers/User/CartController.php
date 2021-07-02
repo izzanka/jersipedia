@@ -7,9 +7,10 @@ use App\Order;
 use App\Jersey;
 use App\Province;
 use App\OrderDetail;
-use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,7 +22,7 @@ class CartController extends Controller
         $order = Order::where('user_id',auth()->id())->where('status',0)->first();
 
         if($order){
-            if($order->province_id && $order->city_id && $order->courier && $order->service != null){
+            if(!Gate::allows('checkPayment',$order)){
                 return redirect(route('payment',$order->code))->with('message',['text' => 'Please complete this payment first!','class' => 'danger']);
             }else{
                 $orderdetails = OrderDetail::with('jersey')->where('order_id', $order->id)->paginate(2);
@@ -98,7 +99,7 @@ class CartController extends Controller
     {
         $order = Order::where('user_id',auth()->id())->where('code',$code)->where('status',0)->firstOrFail();
 
-        if($order->province_id && $order->city_id && $order->courier && $order->service != null){
+        if(!Gate::allows('checkPayment',$order)){
             return redirect(route('payment',$order->code))->with('message',['text' => 'Please complete this payment first!','class' => 'danger']);
         }
 

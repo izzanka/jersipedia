@@ -7,6 +7,7 @@ use App\Jersey;
 use App\OrderDetail;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 
 class JerseyController extends Controller
@@ -14,11 +15,11 @@ class JerseyController extends Controller
     public function index(Request $request)
     {
         $title = 'List Jersey';
-        if($request->search){
-            $jerseys = Jersey::where('name','like','%' . $request->search . '%')->latest()->paginate(8);
-        }else{
-            $jerseys = Jersey::latest()->paginate(8);
-        }
+
+        $jerseys = Jersey::when(request('search'), function($query){
+            return $query->where('name','like','%' . request('search') . '%');
+        })->latest()->paginate(8);
+
         return view('jersey',compact('jerseys','title'));
     }
 
@@ -34,7 +35,7 @@ class JerseyController extends Controller
         $order = Order::where('user_id',$user)->where('status',0)->first();
 
         if($order){
-            if($order->province_id && $order->city_id && $order->courier && $order->service != null){
+            if(!Gate::allows('checkPayment',$order)){
                 return redirect(route('payment',$order->code))->with('message',['text' => 'Please complete this payment first!','class' => 'danger']);
             }
         }
