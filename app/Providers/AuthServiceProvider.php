@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\User;
+use App\Order;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -33,7 +35,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role == 'user';
         });
 
-        Gate::define('checkPayment',function ($order){
+        Gate::define('checkPayment',function (User $user,Order $order){
+      
             return $order->province_id && $order->city_id && $order->courier && $order->service != null;
         });
     }

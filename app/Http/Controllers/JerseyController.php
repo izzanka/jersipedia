@@ -32,10 +32,10 @@ class JerseyController extends Controller
     public function insert_cart(Request $request,Jersey $jersey)
     {
         $user = auth()->id();
-        $order = Order::where('user_id',$user)->where('status',0)->first();
-
+        $order = Order::where('user_id',$user)->where('status',0)->latest()->first();
+        
         if($order){
-            if(!Gate::allows('checkPayment',$order)){
+            if(Gate::allows('checkPayment',$order)){
                 return redirect(route('payment',$order->code))->with('message',['text' => 'Please complete this payment first!','class' => 'danger']);
             }
         }
@@ -48,7 +48,7 @@ class JerseyController extends Controller
 
         if($validator->fails()){
             return redirect()
-                ->route('jersey.detail',$id)
+                ->route('jersey.detail',$jersey->id)
                 ->withErrors($validator)
                 ->withInput();
         }

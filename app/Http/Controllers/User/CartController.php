@@ -19,10 +19,10 @@ class CartController extends Controller
 {
     public function index()
     {
-        $order = Order::where('user_id',auth()->id())->where('status',0)->first();
+        $order = Order::where('user_id',auth()->id())->where('status',0)->latest()->first();
 
         if($order){
-            if(!Gate::allows('checkPayment',$order)){
+            if(Gate::allows('checkPayment',$order)){
                 return redirect(route('payment',$order->code))->with('message',['text' => 'Please complete this payment first!','class' => 'danger']);
             }else{
                 $orderdetails = OrderDetail::with('jersey')->where('order_id', $order->id)->paginate(2);
@@ -99,7 +99,7 @@ class CartController extends Controller
     {
         $order = Order::where('user_id',auth()->id())->where('code',$code)->where('status',0)->firstOrFail();
 
-        if(!Gate::allows('checkPayment',$order)){
+        if(Gate::allows('checkPayment',$order)){
             return redirect(route('payment',$order->code))->with('message',['text' => 'Please complete this payment first!','class' => 'danger']);
         }
 
