@@ -6,7 +6,9 @@ use App\Order;
 use App\Jersey;
 use Carbon\Carbon;
 use App\OrderDetail;
+use App\Mail\SendMail;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class checkorder extends Command
 {
@@ -44,7 +46,6 @@ class checkorder extends Command
      
         \Log::info('Checking orders is running');
 
-        $date_now = Carbon::now();
         $ordersdate = Order::select('status','updated_at','id')->where('status','!=',0)->get();
         
         foreach($ordersdate as $order){
@@ -63,14 +64,29 @@ class checkorder extends Command
            }
         }
 
-        $count_orders = Order::where('status',3)->count();
-        echo 'Checking... ';
-        if($count_orders){
-            echo ' failed orders : ' . $count_orders;
-        }else{
-            echo ' not found ';
+        $orders = Order::where('status',3)->get();
+        foreach($orders as $order){
+            $orderdetails = OrderDetail::where('order_id',$order->id)->with('order')->get();
+            foreach($orderdetails as $orderdetail){
+                $email = $orderdetail->order->user->email;
+                $data = [
+                    'title' => 'Your order failed to be confirmed',
+                    'url' => route('history'),
+                    'code' => $orderdetail->order->unique_code
+                ];
+                Mail::to($email)->send(new SendMail($data));
+            }
         }
 
+        $count_orders = $orders->count();
+        echo 'Result = ';
+        if($count_orders){
+            echo $count_orders;
+        }else{
+            echo 0;
+        }
+
+        
         
     }
 }
