@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::group(['middleware'=>'HtmlMinifier'], function(){ 
- 
-    Auth::routes(['verify' => true]);
+Route::group(['middleware'=>'HtmlMinifier'], function(){
 
     Route::get('/cronjob',function(){
-        Artisan::call('/checkorder');
+        Artisan::call('checkorder');
     });
+
+    Auth::routes(['verify' => true]);
     
     Route::get('/','HomeController@index');
     Route::get('/jersey','JerseyController@index')->name('jersey');
@@ -62,24 +62,24 @@ Route::group(['middleware'=>'HtmlMinifier'], function(){
             });
     
         });
-    
-    });
-    
-    Route::group(['middleware' => ['auth','can:isAdmin']],function(){
+
+        Route::group(['middleware' => ['can:isAdmin']],function(){
         
-        Route::namespace('Admin')->group(function(){
-    
-            Route::get('/order','OrderController@index')->name('order');
-            Route::get('/order/confirm/{code}','OrderController@confirm')->name('order.confirm');
-            
-            Route::resource('jerseys','JerseyController');
-            Route::get('/order-detail/{code}', 'OrderController@detail')->name('order.detail');
-    
-            Route::get('/order/export-excel','OrderController@export_excel')->name('order.export.excel');
+            Route::namespace('Admin')->group(function(){
+        
+                Route::get('/order','OrderController@index')->name('order');
+                Route::get('/order/confirm/{code}','OrderController@confirm')->name('order.confirm');
+                
+                Route::resource('jerseys','JerseyController');
+                Route::get('/order-detail/{code}', 'OrderController@detail')->name('order.detail');
+        
+                Route::get('/order/export-excel','OrderController@export_excel')->name('order.export.excel');
+            });
+        
         });
-    
+
     });
-  
+
 });
 
 
