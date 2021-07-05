@@ -65,6 +65,15 @@ class checkorder extends Command
         }
 
         $orders = Order::where('status',3)->get();
+
+        $count_orders = $orders->count();
+        echo 'Failed Orders = ';
+        if($count_orders){
+            echo $count_orders;
+        }else{
+            echo 0;
+        }
+
         foreach($orders as $order){
             $orderdetails = OrderDetail::where('order_id',$order->id)->with('order')->get();
             foreach($orderdetails as $orderdetail){
@@ -72,20 +81,15 @@ class checkorder extends Command
                 $data = [
                     'title' => 'Your order failed to be confirmed',
                     'url' => route('history'),
-                    'code' => $orderdetail->order->unique_code
+                    'code' => $orderdetail->order->code
                 ];
                 Mail::to($email)->send(new SendMail($data));
             }
+            $order->status = 4;
+            $order->save();
         }
 
-        $count_orders = $orders->count();
-        echo 'Result = ';
-        if($count_orders){
-            echo $count_orders;
-        }else{
-            echo 0;
-        }
-
+       
         
         
     }

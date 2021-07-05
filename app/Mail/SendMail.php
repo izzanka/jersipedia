@@ -30,7 +30,7 @@ class SendMail extends Mailable
     public function build()
     {
         return $this->markdown('orderfailedmail')
-                    ->subject('Notification about your order')
+                    ->subject('Notification about your order!')
                     ->with('data',$this->data);
     }
 }
