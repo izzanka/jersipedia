@@ -88,9 +88,9 @@
                                 @elseif($order->status == 2)
                                     Payment was confirmed successfully<br>
                                     <small>Your order will be delivered</small>
-                                @elseif($order->status == 3)
-                                    Payment failed to be confirmed
                                 @elseif($order->status == 4)
+                                    Payment failed to be confirmed
+                                @elseif($order->status == 5)
                                     Order canceled
                                 @endif
                             </td>

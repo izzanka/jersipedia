@@ -87,7 +87,7 @@
                                         Payment is waiting to be confirmed
                                     @elseif($order->status == 2)
                                         Payment was confirmed successfully
-                                    @elseif($order->status == 3)
+                                    @elseif($order->status == 4)
                                         Payment failed to be confirmed
                                     @endif
                                 </td>

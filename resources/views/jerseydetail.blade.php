@@ -81,7 +81,7 @@
                         <tr>
                             <td>Weight</td>
                             <td>:</td>
-                            <td>{{ $jersey->weight }} kg</td>
+                            <td>{{ $jersey->weight }} gram</td>
                         </tr>
                         <tr>
                             <td colspan="3">NameSet <small>(fill if you want add nameset)</small></td>

@@ -101,7 +101,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <h6>Total Weight</h6>
+                            <h6>Total Weight*</h6>
                             <input type="text" class="form-control" name="weight" value="{{ $order->total_weight }}" readonly>
                             <small>*gram</small>
                         </div>
@@ -129,7 +129,7 @@
                                 <tr>
                                     <th>Service</th>
                                     <th>Description</th>
-                                    <th>Price</th>
+                                    <th>Cost</th>
                                     <th>Estimation(Day)</th>
                                     <th>Note</th>
                                     <th>Action</th>
@@ -140,7 +140,7 @@
                                 <tr>
                                     <td>{{$cekongkir['service']}}</td>
                                     <td>{{$cekongkir['description']}}</td>
-                                    <td><b>Rp. {{number_format($cekongkir['cost'][0]['value'])}}</b></td>
+                                    <td><b> + Rp. {{number_format($cekongkir['cost'][0]['value'])}}</b></td>
                                     <td>{{$cekongkir['cost'][0]['etd']}}</td>
                                     <td>{{$cekongkir['cost'][0]['note']}}</td>
                                     <td>

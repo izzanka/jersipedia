@@ -36,7 +36,7 @@
             <h4><i class="bi bi-credit-card"></i> Payment Information</h4>
             <hr>
             <p class="text-danger">Please do the transfer before 24 hours, otherwise the order will be automatically failed</p>
-            <p>Transfer to the account below for :<br><strong> Rp. {{ number_format($order->total_price) }}</strong> </p>
+            <p>Transfer to the account below for :<br><strong> Rp. {{ number_format($order->total_price) }} = (Rp. {{ number_format($order->total_price - $order->cost) }}) + (Rp. {{ number_format($order->cost) }})</strong> </p>
              <div class="media mt-3">
                 <img class="mr-3" src="{{ url('images/payment/bca.png') }}"width="60">
                 <div class="media-body">
@@ -75,7 +75,7 @@
                             <td>{{ $order->address }}</td>
                             <td>{{ $order->phone }}</td>
                             <td>{{ strtoupper($order->courier) }}</td>
-                            <td>{{ $order->service }}</td>
+                            <td>{{ strtoupper($order->service) }}</td>
                             <td>{{ $order->estimation }}</td>
                         </tbody>
                     </table>
