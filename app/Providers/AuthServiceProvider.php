@@ -36,7 +36,6 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('checkPayment',function (User $user,Order $order){
-      
             return $order->province_id && $order->city_id && $order->courier && $order->service != null;
         });
     }
