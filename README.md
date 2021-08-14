@@ -48,11 +48,11 @@ JERSIPEDIA is a simple jerseys online shop that integrated with api raja ongkir
 ### Installation
 
 1. Clone the repo, then enter the project directory with terminal
-2. Install Composer
+2. Install Composer<br>
    ```sh
    composer install
    ```
-3. 
+3. <br>
    ```sh
    cp .env.example .env
    ```
