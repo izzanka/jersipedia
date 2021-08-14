@@ -59,3 +59,5 @@ php artisan serve
 <img src="public/images/ss/ss4.png" alt="ss4">
 <img src="public/images/ss/ss5.png" alt="ss5">
 <img src="public/images/ss/ss6.png" alt="ss6">
+
+* Link : https:://jersipedia.000webhostapp.com
