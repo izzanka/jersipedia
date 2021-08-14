@@ -47,40 +47,33 @@ JERSIPEDIA is a simple jerseys online shop that integrated with api raja ongkir
 
 ### Installation
 
-1. Clone the repo, then enter the project directory with terminal
-2. Install Composer<br>
-   ```sh
-   composer install
-   ```
-3. <br>
-   ```sh
-   cp .env.example .env
-   ```
-4. 
-   ```sh
-   php artisan key:generate
-   ```
-5. Create new database
-6. 
-   ```sh
-   php artisan migrate
-   ```
-7. Dummy data league
-   ```sh
-   php artisan db:seed --class=LeagueSeeder
-   ```
-   Dummy data jersey
-   ```sh
-   php artisan db:seed --class=JerseySeeder
-   ```
-   Dummy data admin
-   ```sh
-   php artisan db:seed --class=UserSeeder
-   ```
-8. 
-   ```sh
-   php artisan migrate
-   ```
+* Clone the repo, then enter the project directory with terminal
+```sh
+composer install
+```
+```sh
+cp .env.example .env
+```
+```sh
+php artisan key:generate
+```
+* Create new database, then change the .env
+```sh
+php artisan migrate
+```
+* Dummy data
+```sh
+php artisan db:seed --class=LeagueSeeder
+```
+```sh
+php artisan db:seed --class=JerseySeeder
+```
+```sh
+php artisan db:seed --class=UserSeeder
+```
+```sh
+php artisan migrate
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
