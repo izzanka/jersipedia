@@ -1,5 +1,4 @@
 <!-- PROJECT LOGO -->
-<br />
 <p align="center">
   <h3 align="center">JERSIPEDIA</h3>
 </p>
@@ -30,63 +29,64 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+JERSIPEDIA is a simple jerseys online shop that integrated with api raja ongkir
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 * [Laravel](https://laravel.com)
+* [RajaOngkir](https://rajaongkir.com)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo, then enter the project directory with terminal
+2. Install Composer
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   composer install
    ```
-3. Install NPM packages
+3. 
    ```sh
-   npm install
+   cp .env.example .env
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+4. 
+   ```sh
+   php artisan key:generate
    ```
-
-
+5. Create new database
+6. 
+   ```sh
+   php artisan migrate
+   ```
+7. Dummy data league
+   ```sh
+   php artisan db:seed --class=LeagueSeeder
+   ```
+   Dummy data jersey
+   ```sh
+   php artisan db:seed --class=JerseySeeder
+   ```
+   Dummy data admin
+   ```sh
+   php artisan db:seed --class=UserSeeder
+   ```
+8. 
+   ```sh
+   php artisan migrate
+   ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+<img src="public/images/ss/ss1.png" alt="ss1">
+<img src="public/images/ss/ss2.png" alt="ss2">
+<img src="public/images/ss/ss3.png" alt="ss3">
+<img src="public/images/ss/ss4.png" alt="ss4">
+<img src="public/images/ss/ss5.png" alt="ss5">
+<img src="public/images/ss/ss6.png" alt="ss6">
