@@ -53,6 +53,9 @@ php artisan serve
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+* Link : https://jersipedia.000webhostapp.com
+
 <img src="public/images/ss/ss1.png" alt="ss1">
 <img src="public/images/ss/ss2.png" alt="ss2">
 <img src="public/images/ss/ss3.png" alt="ss3">
@@ -60,4 +63,4 @@ php artisan serve
 <img src="public/images/ss/ss5.png" alt="ss5">
 <img src="public/images/ss/ss6.png" alt="ss6">
 
-* Link : https:://jersipedia.000webhostapp.com
+
