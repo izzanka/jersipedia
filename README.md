@@ -6,16 +6,25 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-JERSIPEDIA is a simple jerseys online shop that integrated with api raja ongkir
+## Built With
 
-### Built With
+### Framework
 
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
 * [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+
+### Library
+
+* [JQuery](https://jquery.com)
+
+### Api
+
 * [RajaOngkir](https://rajaongkir.com)
 
+### Package
 
+* [maatwebsite/excel](https://github.com/Maatwebsite/Laravel-Excel)
+* [spatie/image](https://github.com/spatie/image)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -36,7 +45,7 @@ php artisan key:generate
 ```sh
 php artisan migrate
 ```
-* Dummy data
+* Dummy data 
 ```sh
 php artisan db:seed --class=LeagueSeeder
 ```
