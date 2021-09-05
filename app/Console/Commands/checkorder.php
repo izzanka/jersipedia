@@ -46,7 +46,7 @@ class checkorder extends Command
      
         \Log::info('Checking orders is running');
 
-        $ordersdate = Order::select('status','updated_at','id')->where('status','!=',0)->get();
+        $ordersdate = Order::select('status','updated_at','id')->whereNotIn('status',2)->get();
         
         foreach($ordersdate as $order){
            $result = $order->updated_at->diffInDays();

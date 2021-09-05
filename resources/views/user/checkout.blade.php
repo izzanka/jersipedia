@@ -49,7 +49,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <h6>Phone</h6>
-                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $order->phone }}">
+                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $order->user->phone}}">
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <h6>Detail Address</h6>
-                            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $order->address ?? old('address')}}">
+                            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $order->user->address}}">
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
