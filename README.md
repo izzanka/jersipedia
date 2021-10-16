@@ -3,8 +3,8 @@
   <h3 align="center">JERSIPEDIA</h3>
 </p>
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- ABOUT -->
+## About
 
 ## Built With
 
