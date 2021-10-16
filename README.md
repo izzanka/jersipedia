@@ -3,8 +3,9 @@
   <h3 align="center">JERSIPEDIA</h3>
 </p>
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- ABOUT -->
+## About 
+A simple online shop integrated with api raja ongkir (https://rajaongkir.com/)
 
 ## Built With
 
