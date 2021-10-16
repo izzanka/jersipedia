@@ -5,6 +5,7 @@
 
 <!-- ABOUT -->
 ## About
+A simple online shop integrated with api raja ongkir (https://rajaongkir.com/) 
 
 ## Built With
 
