@@ -64,7 +64,7 @@ php artisan serve
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* Website : https://jersipedia.000webhostapp.com
+* Website : https://jersipedia.ferdirns.com/public/
 
 <img src="public/images/ss/ss1.png" alt="ss1">
 <img src="public/images/ss/ss2.png" alt="ss2">
