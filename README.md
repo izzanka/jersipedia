@@ -26,6 +26,7 @@ A simple online shop integrated with api raja ongkir (https://rajaongkir.com/)
 
 * [maatwebsite/excel](https://github.com/Maatwebsite/Laravel-Excel)
 * [spatie/image](https://github.com/spatie/image)
+* [laravel/ui](https://github.com/laravel/ui)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -64,6 +65,6 @@ php artisan serve
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* Website : https://jersipedia.ferdirns.com/public/
+* Website : https://jersipedia.ferdirns.com
 
 
