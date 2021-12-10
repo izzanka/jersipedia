@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <h3 align="center">JERSIPEDIA</h3>
+  <h3 align="center">JERSIPEDIA (https://jersipedia.ferdirns.com)</h3>
 </p>
 
 <!-- ABOUT -->
@@ -61,10 +61,4 @@ php artisan db:seed --class=UserSeeder
 ```sh
 php artisan serve
 ```
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-* Website : https://jersipedia.ferdirns.com
-
 
