@@ -46,7 +46,7 @@ class checkorder extends Command
      
         \Log::info('Checking orders is running');
 
-        $ordersdate = Order::select('status','updated_at','id')->where('status','!=',2)->get();
+        $ordersdate = Order::select('status','updated_at','id')->whereNotIn('status',[0,4])->get();
         
         foreach($ordersdate as $order){
            $result = $order->updated_at->diffInDays();
@@ -74,6 +74,8 @@ class checkorder extends Command
             echo 0;
         }
 
+        \Log::info('Failed Orders = ' . $count_orders);
+
         foreach($orders as $order){
             $orderdetails = OrderDetail::where('order_id',$order->id)->with('order')->get();
             foreach($orderdetails as $orderdetail){
@@ -88,9 +90,5 @@ class checkorder extends Command
             $order->status = 4;
             $order->save();
         }
-
-       
-        
-        
     }
 }
