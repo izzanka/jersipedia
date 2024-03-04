@@ -5,7 +5,7 @@
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
                         Copyright &copy; 2024
-                        <a href="." class="link-secondary">Jersipedia</a>
+                        <a href="{{route('home')}}" wire:navigate class="link-secondary">Jersipedia</a>
                     </li>
                 </ul>
             </div>

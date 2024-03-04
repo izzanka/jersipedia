@@ -1,5 +1,11 @@
 <?php
 
+use App\Livewire\Auth\Login;
+use App\Livewire\Auth\Register;
+use App\Livewire\Cart\CartIndex;
+use App\Livewire\Home;
+use App\Livewire\Product\ProductDetail;
+use App\Livewire\Product\ProductIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +19,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/home', function () {
+    return redirect()->route('home');
+});
+
+Route::get('/', Home::class)->name('home');
+Route::get('/products/{cond}', ProductIndex::class)->name('products.index');
+Route::get('/products/{product:name_slug}/detail', ProductDetail::class)->name('products.detail');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/register', Register::class)->name('register');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', function () {
+        auth()->logout();
+
+        return redirect()->route('home');
+    });
+    Route::get('/cart', CartIndex::class)->name('cart.index');
 });
